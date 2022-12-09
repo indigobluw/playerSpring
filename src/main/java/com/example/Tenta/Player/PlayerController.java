@@ -16,22 +16,22 @@ public class PlayerController {
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
     }
-    @GetMapping
+    @GetMapping //#1
     public List<Player> getPlayers() {
         return playerService.getPlayers();
     }
 
-    @PostMapping
+    @PostMapping //#2
     public void registerNewPlayer(@RequestBody Player player) {
         playerService.addNewPlayer(player);
     }
 
-    @DeleteMapping(path="{playerId}")
+    @DeleteMapping(path="{playerId}") //#3
     public void deletePlayer(@PathVariable("playerId") Long playerId) {
         playerService.deletePlayer(playerId);
     }
 
-    @PutMapping(path="{playerId}")
+    @PutMapping(path="{playerId}") //#4
     public void updatePlayer(@PathVariable("playerId") Long playerId,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) Integer score){
